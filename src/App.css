@@ -1,0 +1,72 @@
+/***********
+ * Application CSS
+ *
+ * You do not have to worry about modifying this file.
+ ***********/
+
+body {
+  margin: 20px;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+a {
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.countdown {
+  font-size: 200px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.table {
+  display: inline-block;
+  border: 2px solid black;
+  height: 450px;
+  width: 100%;
+}
+
+.task-table {
+  height: 600px;
+  position: relative;
+}
+
+.left {
+  position: absolute;
+  left: 25px;
+  width: 46%;
+}
+.right {
+  position: absolute;
+  right: 25px;
+  width: 46%;
+}
+
+.task {
+  margin: 2px;
+  padding: 6px;
+}
+
+.task input[type=checkbox] {
+  margin-right: 10px
+}
+
+.task-table button {
+  margin-top: 10px;
+}
+
+.task-table button[type=submit] {
+  background-color: #1e90ff;
+  color: #fff;
+  font-size: 20px;
+  width: 90px;
+  height: 40px;
+  position: absolute;
+  bottom: 0;
+  right: 21px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+}
