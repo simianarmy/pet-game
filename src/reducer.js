@@ -31,10 +31,10 @@ function appReducer(state = initialState, action) {
             return { ...state, isFetchingIncompleteTasks: false, incompleteTasks: action.payload.tasks }
         }
         case types.FETCH_COMPLETED_TASKS_START: {
-            return { ...state, isFetchingCompleteTasks: !state.isFetchingCompleteTasks };
+            return { ...state, isFetchingCompleteTasks: true };
         }
         case types.FETCH_COMPLETED_TASKS_SUCCESS: {
-            return { ...state, isFetchingCompleteTasks: false, completedTasks: action.payload.tasks }
+            return { ...state, isFetchingCompleteTasks: false }
         }
         case types.PUT_TASKS_START: {
             return { ...state, isPuttingTask: true };

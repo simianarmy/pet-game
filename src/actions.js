@@ -67,7 +67,7 @@ export function requestCompletedTasksInfo(tasks) {
     return dispatch => {
         Promise.all(tasks.map(
             async (task) => await dispatch(requestIndividualTask(task.id)))).then( () => {
-                dispatch({ type: types.FETCH_COMPLETED_TASKS_START })
+                dispatch({ type: types.FETCH_COMPLETED_TASKS_SUCCESS })
             });
     }
 }

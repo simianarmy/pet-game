@@ -22,13 +22,13 @@ function Task1({ count, setDefused, setBombCounter, setEnableTask2 }) {
             // pass on a function to the setter of the state
             // to make sure we always have the latest state
             setBombCounter(prevBombCount => {
-                if (prevBombCount > 1) {
+                if (prevBombCount > 0) {
                     return (prevBombCount - deltaTime * 0.001) % 100
                 } else {
                     setDefused(true); // we secretly defuse the bomb for the user here
                     setEnableTask2(true);
                     finished = true;
-                    return 1;
+                    return 0;
                 }
             });
         }

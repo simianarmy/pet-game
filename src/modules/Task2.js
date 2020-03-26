@@ -35,7 +35,7 @@ class Task2 extends Component {
     }
 
     componentDidMount() {
-        this.props.actions.app.login(); // TODO: uncomment for debugging
+        // this.props.actions.app.login(); // TODO: uncomment for debugging
         this.props.actions.app.requestIncompleteTasks();
         this.props.actions.app.requestCompletedTasks();
     }
