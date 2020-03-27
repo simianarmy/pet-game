@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import { sortByDescription, removeTaskAndUpdate, updateTaskInArray, updatePendingTasks } from "../utils";
 import * as actions from '../actions';
-import Loader from '../components/Loader';
+import LoadableContent from '../components/LoadableContent';
 
 /**
  * Task2 component.
@@ -35,7 +35,7 @@ class Task2 extends Component {
     }
 
     componentDidMount() {
-        // this.props.actions.app.login(); // TODO: uncomment for debugging
+        this.props.actions.app.login(); // TODO: uncomment for debugging
         this.props.actions.app.requestIncompleteTasks();
         this.props.actions.app.requestCompletedTasks();
     }
@@ -110,12 +110,9 @@ class Task2 extends Component {
         <div className="left">
             <h3>To-Do</h3>
             <div className="table">
-                {
-                    this.props.isFetchingIncompleteTasks ? 
-                    <Loader />
-                    :
-                    tasks.map(this.buildTask(TASK_TYPE.TODO))
-                }
+                <LoadableContent isLoading={this.props.isFetchingIncompleteTasks}>
+                    { tasks.map(this.buildTask(TASK_TYPE.TODO)) }
+                </LoadableContent>
             </div>
             <button onClick={this.handleMarkComplete}>Mark Completed</button>
         </div>
@@ -125,12 +122,9 @@ class Task2 extends Component {
         <div className="right">
             <h3>Completed</h3>
             <div className="table">
-                {
-                    this.props.isFetchingCompleteTasks ?
-                    <Loader />
-                    :
-                    tasks.map(this.buildTask(TASK_TYPE.COMPLETED))
-                }
+                <LoadableContent isLoading={this.props.isFetchingCompleteTasks}>
+                    { tasks.map(this.buildTask(TASK_TYPE.COMPLETED)) }
+                </LoadableContent>
             </div>
             <button onClick={this.handleMarkTodo}>Mark To-Do</button>
         </div>
@@ -144,12 +138,9 @@ class Task2 extends Component {
                 {this.buildTodoTable(todoTasks)}
                 {this.buildCompletedTable(completedTasks)}
                 <button type="submit" disabled={this.setDisabledButton()} onClick={this.handleSubmit}>
-                    {
-                        this.setDisabledButton() ?
-                        <Loader />
-                        :
-                        'Submit'
-                    }
+                    <LoadableContent isLoading={this.setDisabledButton()}>
+                        Submit
+                    </LoadableContent>
                 </button>
             </div>
         );
