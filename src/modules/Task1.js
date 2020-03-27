@@ -11,6 +11,19 @@ import PropTypes from 'prop-types';
  */
 function Task1({ count, setDefused, setBombCounter, setEnableTask2 }) {
 
+  useEffect(() => {
+      setTimeout(() => {
+        if (count > 1) {
+          setBombCounter(count - 1);
+        } else {
+          setDefused(true);
+          setEnableTask2(true);
+          setBombCounter(0);
+        }
+      }, 1000);
+  }, [count, setBombCounter, setDefused, setEnableTask2]);
+
+    /*
     const requestRef = useRef();
     const previousTimeRef = useRef();
 
@@ -18,7 +31,7 @@ function Task1({ count, setDefused, setBombCounter, setEnableTask2 }) {
         let finished = false;
         if (typeof previousTimeRef.current !== 'undefined') {
             const deltaTime = time - previousTimeRef.current;
-            
+
             // pass on a function to the setter of the state
             // to make sure we always have the latest state
             setBombCounter(prevBombCount => {
@@ -42,6 +55,7 @@ function Task1({ count, setDefused, setBombCounter, setEnableTask2 }) {
         requestRef.current = requestAnimationFrame(animateCountdown);
         return () => cancelAnimationFrame(requestRef.current);
     }, [animateCountdown]);
+    */
 
     return (
         <div className="countdown">{count}</div>
